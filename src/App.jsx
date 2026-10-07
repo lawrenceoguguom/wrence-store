@@ -6,13 +6,17 @@ import ProductCard from './components/ProductCard/ProductCard'
 import ProductDetails from './components/ProductDetails/ProductDetails'
 import ProductListPage from './components/ProductListPage/ProductListPage'
 import QuickView from './components/QuickView/QuickView'
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import Footer from './components/Footer/Footer'
 import { WishlistProvider, useWishlist } from './context/WishlistContext'
 import { products } from './data/products'
 import InfoPage from './pages/InfoPage/InfoPage'
 import Login from './pages/Login/Login'
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy'
 import Registration from './pages/Registration/Registration'
+import ReturnsPolicy from './pages/ReturnsPolicy/ReturnsPolicy'
 import SearchPage from './pages/Search/SearchPage'
+import TermsConditions from './pages/TermsConditions/TermsConditions'
 import WishlistPage from './pages/Wishlist/WishlistPage'
 import './App.css'
 
@@ -229,7 +233,6 @@ const App = () => {
     { path: '/contact', title: 'Contact Us', description: 'Our support team is here to answer product questions, shipping enquiries, and purchase help.', eyebrow: 'Customer service', details: [{ title: 'Need help?', text: 'Reach out to our concierge team and we will guide you through your order or product question.' }] },
     { path: '/faq', title: 'FAQs', description: 'Find quick answers to the most common questions about shipping, delivery, sizing, and order support.', eyebrow: 'Help centre', details: [{ title: 'Common questions', text: 'Most shoppers ask about delivery times, returns, sizing, and care instructions before checkout.' }] },
     { path: '/shipping', title: 'Shipping & Delivery', description: 'We offer reliable delivery to cities and towns across the country with clear shipping timelines and order tracking.', eyebrow: 'Shipping', details: [{ title: 'Delivery information', text: 'Standard and express shipping options are available for most orders, with tracking sent after purchase confirmation.' }] },
-    { path: '/returns', title: 'Returns & Refunds', description: 'Returns are simple and transparent, with clear timelines for exchanges, refunds, and store credit.', eyebrow: 'Customer care', details: [{ title: 'Returns policy', text: 'Eligible items can be returned in line with our policy. Keep your order confirmation and packaging until your return is complete.' }] },
     { path: '/order-help', title: 'Order Help', description: 'Need support with a purchase, delivery status, or changes to your order? We can help.', eyebrow: 'Orders', details: [{ title: 'Order support', text: 'Track updates, manage delivery questions, and review the status of your recent purchases with our help team.' }] },
     { path: '/account', title: 'My Account', description: 'Access your saved details, recent orders, wishlist and account preferences in one secure place.', eyebrow: 'My account', details: [{ title: 'Account overview', text: 'Your account dashboard keeps your information, saved favourites, and order history organised in one place.' }] },
     { path: '/cart', title: 'Shopping Cart', description: 'Review the items you have selected and continue to a secure checkout when you are ready.', eyebrow: 'Cart', details: [{ title: 'Your bag', text: 'Your selected items are saved here while you continue shopping, track delivery preferences and checkout with ease.' }] },
@@ -238,13 +241,12 @@ const App = () => {
     { path: '/about', title: 'About Us', description: 'Wrence Store brings together refined essentials, everyday comfort, and premium craftsmanship for modern living.', eyebrow: 'Our brand', details: [{ title: 'Who we are', text: 'We design and curate considered essentials for the way people move through work, travel, and everyday routines.' }] },
     { path: '/our-story', title: 'Our Story', description: 'Discover the inspiration and values behind our curated collection of footwear and carry essentials.', eyebrow: 'Brand story', details: [{ title: 'Built for real life', text: 'From daily essentials to elevated staples, each piece is selected to blend practical use with style and lasting quality.' }] },
     { path: '/size-guide', title: 'Size Guide', description: 'Find the right fit for footwear and accessories with our quick guide to sizing and fit recommendations.', eyebrow: 'Fit & sizing', details: [{ title: 'Helpful fit notes', text: 'Use this guide to compare sizing, find your ideal fit, and shop with more confidence before you order.' }] },
-    { path: '/privacy', title: 'Privacy Policy', description: 'We respect your information and keep your personal details protected with clear, transparent standards.', eyebrow: 'Privacy', details: [{ title: 'Your information', text: 'We handle your personal details with care and only use them to support your shopping experience and communication preferences.' }] },
-    { path: '/terms', title: 'Terms & Conditions', description: 'Read the terms that govern shopping, purchases, returns, and communications with Wrence Store.', eyebrow: 'Legal', details: [{ title: 'Store terms', text: 'These terms support a transparent and secure shopping experience for our customers and partners.' }] },
     { path: '/sitemap', title: 'Sitemap', description: 'Browse the key sections, products, and support pages of the store from one simple overview.', eyebrow: 'Explore', details: [{ title: 'Store navigation', text: 'Use this page as a quick guide to the best places to explore the collection, account details, and support information.' }] },
   ]
 
   return (
     <WishlistProvider>
+      <ScrollToTop />
       <div className='app'>
         <Header />
         {showHero && <Hero />}
@@ -255,6 +257,9 @@ const App = () => {
             <Route path='/wishlist' element={<WishlistPage />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Registration />} />
+            <Route path='/privacy' element={<PrivacyPolicy />} />
+            <Route path='/terms' element={<TermsConditions />} />
+            <Route path='/returns' element={<ReturnsPolicy />} />
             <Route path='/product/:productId' element={<ProductDetails />} />
             {footerInfoRoutes.map((page) => (
               <Route
